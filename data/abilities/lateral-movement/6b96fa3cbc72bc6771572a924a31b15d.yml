@@ -1,0 +1,15 @@
+- description: 'Map Admin share utilizing PowerShell
+
+    '
+  id: 6b96fa3cbc72bc6771572a924a31b15d
+  name: Map Admin Share PowerShell
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: New-PSDrive -name g -psprovider filesystem -root \\Target\C$
+        payloads: []
+  tactic: lateral-movement
+  technique:
+    attack_id: T1021.002
+    name: 'Remote Services: SMB/Windows Admin Shares'

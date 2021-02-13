@@ -1,0 +1,19 @@
+- description: 'Disables the iptables firewall
+
+    '
+  id: 0998d1464c01c4abf39bb8101af3e5de
+  name: Disable iptables firewall
+  platforms:
+    linux:
+      sh:
+        cleanup: ''
+        command: if [ $(rpm -q --queryformat '%{VERSION}' centos-release) -eq "6"
+          ];; then;   service iptables stop;   chkconfig off iptables;   service ip6tables
+          stop;   chkconfig off ip6tables; else if [ $(rpm -q --queryformat '%{VERSION}'
+          centos-release) -eq "7" ];;   systemctl stop firewalld;   systemctl disable
+          firewalld; fi
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562.004
+    name: 'Impair Defenses: Disable or Modify System Firewall'

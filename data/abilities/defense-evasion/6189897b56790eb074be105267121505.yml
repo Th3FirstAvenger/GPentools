@@ -1,0 +1,20 @@
+- description: 'Delete a single file from the temporary directory
+
+    '
+  id: 6189897b56790eb074be105267121505
+  name: Delete a single file - Linux/macOS
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: rm -f /tmp/victim-files/a
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: rm -f /tmp/victim-files/a
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1070.004
+    name: 'Indicator Removal on Host: File Deletion'

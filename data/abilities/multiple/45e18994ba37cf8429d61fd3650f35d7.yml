@@ -1,0 +1,20 @@
+- description: 'Adds a command to the .bash_profile file of the current user
+
+    '
+  id: 45e18994ba37cf8429d61fd3650f35d7
+  name: Add command to .bash_profile
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: echo "/path/to/script.py" >> ~/.bash_profile
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: echo "/path/to/script.py" >> ~/.bash_profile
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1546.004
+    name: 'Event Triggered Execution: .bash_profile and .bashrc'

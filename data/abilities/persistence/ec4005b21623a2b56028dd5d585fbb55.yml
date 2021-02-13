@@ -1,0 +1,20 @@
+- description: 'Office Test Registry location exists that allows a user to specify
+    an arbitrary DLL that will be executed every time an Office
+
+    application is started. Key is used for debugging purposes. Not created by default
+    & exist in HKCU & HKLM hives.
+
+    '
+  id: ec4005b21623a2b56028dd5d585fbb55
+  name: Office Apllication Startup Test Persistence
+  platforms:
+    windows:
+      cmd:
+        cleanup: reg delete "HKEY_CURRENT_USER\Software\Microsoft\Office test\Special\Perf"
+        command: reg add "HKEY_CURRENT_USER\Software\Microsoft\Office test\Special\Perf"
+          /t REG_SZ /d "C:\Path\AtomicRedTeam.dll"
+        payloads: []
+  tactic: persistence
+  technique:
+    attack_id: T1137.002
+    name: 'Office Application Startup: Office Test'

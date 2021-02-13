@@ -1,0 +1,15 @@
+- description: 'Show if a user account has ever logged in remotely
+
+    '
+  id: ede4cb2a7ade401fbec1565155ba4cf2
+  name: Show if a user account has ever logged in remotely
+  platforms:
+    linux:
+      sh:
+        cleanup: rm -f /tmp/T1087.001.txt
+        command: lastlog > /tmp/T1087.001.txt; cat /tmp/T1087.001.txt
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1087.001
+    name: 'Account Discovery: Local Account'

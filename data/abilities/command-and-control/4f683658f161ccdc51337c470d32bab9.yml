@@ -1,0 +1,18 @@
+- description: 'This test uses PowerShell to download a payload.
+
+    This technique is used by multiple adversaries and malware families.
+
+    '
+  id: 4f683658f161ccdc51337c470d32bab9
+  name: Windows - PowerShell Download
+  platforms:
+    windows:
+      psh:
+        cleanup: Remove-Item $env:TEMP\Atomic-license.txt -Force -ErrorAction Ignore
+        command: (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt",
+          "$env:TEMP\Atomic-license.txt")
+        payloads: []
+  tactic: command-and-control
+  technique:
+    attack_id: T1105
+    name: Ingress Tool Transfer

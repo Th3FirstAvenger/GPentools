@@ -1,0 +1,20 @@
+- description: 'This test simulates an adversary leveraging Web Shells by simulating
+    the file modification to disk.
+
+    Idea from APTSimulator.
+
+    cmd.aspx source - https://github.com/tennc/webshell/blob/master/fuzzdb-webshell/asp/cmd.aspx
+
+    '
+  id: 7e09df5c79d4752b02469d1385175eb7
+  name: Web Shell Written to Disk
+  platforms:
+    windows:
+      cmd:
+        cleanup: del C:\inetpub\wwwroot /q >nul 2>&1
+        command: xcopy PathToAtomicsFolder\T1505.003\src\ C:\inetpub\wwwroot
+        payloads: []
+  tactic: persistence
+  technique:
+    attack_id: T1505.003
+    name: 'Server Software Component: Web Shell'

@@ -1,0 +1,23 @@
+- description: 'PowerShell code to set Winlogon Notify key to execute a notification
+    package DLL at logon.
+
+
+    Upon successful execution, PowerShell will modify a registry value to execute
+    atomicNotificationPackage.dll upon logon/logoff.
+
+    '
+  id: 82c3b0718dd2fa00302c0d8f143abeeb
+  name: Winlogon Notify Key Logon Persistence - PowerShell
+  platforms:
+    windows:
+      psh:
+        cleanup: Remove-Item "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify"
+          -Force -ErrorAction Ignore
+        command: New-Item "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify"
+          -Force; Set-ItemProperty "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify"
+          "logon" "C:\Windows\Temp\atomicNotificationPackage.dll" -Force
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1547.004
+    name: 'Boot or Logon Autostart Execution: Winlogon Helper DLL'

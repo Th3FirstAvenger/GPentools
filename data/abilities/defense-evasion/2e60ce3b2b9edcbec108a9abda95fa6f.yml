@@ -1,0 +1,22 @@
+- description: 'Creates base64-encoded PowerShell code and executes it. This is used
+    by numerous adversaries and malicious tools.
+
+
+    Upon successful execution, powershell will execute an encoded command and stdout
+    default is "Write-Host "Hey, Atomic!"
+
+    '
+  id: 2e60ce3b2b9edcbec108a9abda95fa6f
+  name: Execute base64-encoded PowerShell
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: $OriginalCommand = 'Write-Host "Hey, Atomic!"'; $Bytes = [System.Text.Encoding]::Unicode.GetBytes($OriginalCommand);
+          $EncodedCommand =[Convert]::ToBase64String($Bytes); $EncodedCommand; powershell.exe
+          -EncodedCommand $EncodedCommand
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1027
+    name: Obfuscated Files or Information

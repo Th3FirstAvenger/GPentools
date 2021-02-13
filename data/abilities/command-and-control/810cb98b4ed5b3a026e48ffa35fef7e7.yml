@@ -1,0 +1,21 @@
+- description: 'Use certutil -verifyctl argument to download a file from the web.
+    Note - /verifyctl also works!
+
+    '
+  id: 810cb98b4ed5b3a026e48ffa35fef7e7
+  name: certutil download (verifyctl)
+  platforms:
+    windows:
+      psh:
+        cleanup: Remove-Item "certutil-$(Get-Date -format yyyy_MM_dd)" -Force -Recurse
+          -ErrorAction Ignore
+        command: $datePath = "certutil-$(Get-Date -format yyyy_MM_dd)"; New-Item -Path
+          $datePath -ItemType Directory; Set-Location $datePath; certutil -verifyctl
+          -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt;
+          Get-ChildItem | Where-Object {$_.Name -notlike "*.txt"} | Foreach-Object
+          { Move-Item $_.Name -Destination Atomic-license.txt }
+        payloads: []
+  tactic: command-and-control
+  technique:
+    attack_id: T1105
+    name: Ingress Tool Transfer

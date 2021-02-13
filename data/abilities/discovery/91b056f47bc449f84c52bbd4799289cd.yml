@@ -1,0 +1,18 @@
+- description: 'Network Share Discovery utilizing PowerShell. The computer name variable
+    may need to be modified to point to a different host
+
+    Upon execution, avalaible network shares will be displayed in the powershell session
+
+    '
+  id: 91b056f47bc449f84c52bbd4799289cd
+  name: Network Share Discovery PowerShell
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: net view \\localhost; get-smbshare -Name localhost
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1135
+    name: Network Share Discovery

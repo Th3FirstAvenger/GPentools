@@ -1,0 +1,16 @@
+- description: 'Enumerate logged on users via PowerShell. Upon exeuction, logged on
+    users will be displayed.
+
+    '
+  id: a5631e2fe3fe023f592c348d72954b1c
+  name: Enumerate logged on users via PowerShell
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: query user
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1087.001
+    name: 'Account Discovery: Local Account'

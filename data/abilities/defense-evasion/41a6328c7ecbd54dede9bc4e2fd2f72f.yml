@@ -1,0 +1,16 @@
+- description: 'Creates a root CA with openssl
+
+    '
+  id: 41a6328c7ecbd54dede9bc4e2fd2f72f
+  name: Install root CA on macOS
+  platforms:
+    darwin:
+      cmd:
+        cleanup: ''
+        command: sudo security add-trusted-cert -d -r trustRoot -k "/Library/Keychains/System.keychain"
+          "rootCA.crt"
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1553.004
+    name: 'Subvert Trust Controls: Install Root Certificate'

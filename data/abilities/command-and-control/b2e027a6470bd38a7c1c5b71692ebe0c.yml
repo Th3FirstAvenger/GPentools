@@ -1,0 +1,20 @@
+- description: 'Testing uncommonly used port utilizing telnet.
+
+    '
+  id: b2e027a6470bd38a7c1c5b71692ebe0c
+  name: Testing usage of uncommonly used port
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: telnet google.com 8081
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: telnet google.com 8081
+        payloads: []
+  tactic: command-and-control
+  technique:
+    attack_id: T1571
+    name: Non-Standard Port

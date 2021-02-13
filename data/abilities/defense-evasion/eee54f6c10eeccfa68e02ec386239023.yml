@@ -1,0 +1,15 @@
+- description: 'Execute arbitrary DLL file stored locally.
+
+    '
+  id: eee54f6c10eeccfa68e02ec386239023
+  name: Odbcconf.exe - Execute Arbitrary DLL
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: odbcconf.exe /S /A {REGSVR "#{dll_payload}"}
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1218.008
+    name: 'Signed Binary Proxy Execution: Odbcconf'

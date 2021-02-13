@@ -1,0 +1,25 @@
+- description: 'Methods to identify Security Software on an endpoint
+
+    when sucessfully executed, command shell  is going to display AV software it is
+    running( Little snitch or carbon black ).
+
+    '
+  id: 861f855c6dd8aa1e55f615392bce19ac
+  name: Security Software Discovery - ps
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: ps -ef | grep Little\ Snitch | grep -v grep; ps aux | grep CbOsxSensorService;
+          ps aux | grep falcond
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: ps -ef | grep Little\ Snitch | grep -v grep; ps aux | grep CbOsxSensorService;
+          ps aux | grep falcond
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1518.001
+    name: 'Software Discovery: Security Software Discovery'

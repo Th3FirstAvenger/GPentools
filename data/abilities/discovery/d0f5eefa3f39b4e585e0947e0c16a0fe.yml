@@ -1,0 +1,36 @@
+- description: 'Identify network configuration information.
+
+
+    Upon successful execution, sh will spawn multiple commands and output will be
+    via stdout.
+
+    '
+  id: d0f5eefa3f39b4e585e0947e0c16a0fe
+  name: System Network Configuration Discovery
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: if [ -x "$(command -v arp)" ]; then arp -a; else echo "arp is missing
+          from the machine. skipping..."; fi;; if [ -x "$(command -v ifconfig)" ];
+          then ifconfig; else echo "ifconfig is missing from the machine. skipping...";
+          fi;; if [ -x "$(command -v ip)" ]; then ip addr; else echo "ip is missing
+          from the machine. skipping..."; fi;; if [ -x "$(command -v netstat)" ];
+          then netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c;
+          else echo "netstat is missing from the machine. skipping..."; fi;
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: if [ -x "$(command -v arp)" ]; then arp -a; else echo "arp is missing
+          from the machine. skipping..."; fi;; if [ -x "$(command -v ifconfig)" ];
+          then ifconfig; else echo "ifconfig is missing from the machine. skipping...";
+          fi;; if [ -x "$(command -v ip)" ]; then ip addr; else echo "ip is missing
+          from the machine. skipping..."; fi;; if [ -x "$(command -v netstat)" ];
+          then netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c;
+          else echo "netstat is missing from the machine. skipping..."; fi;
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1016
+    name: System Network Configuration Discovery

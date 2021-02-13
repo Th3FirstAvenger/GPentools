@@ -1,0 +1,19 @@
+- description: 'systemd-detect-virt detects execution in a virtualized environment.
+
+    At boot, dmesg stores a log if a hypervisor is detected.
+
+    '
+  id: 18fa9115e31c7a3140dc33901fd28cc8
+  name: Detect Virtualization Environment (Linux)
+  platforms:
+    linux:
+      sh:
+        cleanup: ''
+        command: if (systemd-detect-virt || sudo dmidecode | egrep -i 'manufacturer|product|vendor'
+          | grep -iE 'Oracle|VirtualBox|VMWare|Parallels') then echo "Virtualization
+          Environment detected"; fi;
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1497.001
+    name: 'Virtualization/Sandbox Evasion: System Checks'

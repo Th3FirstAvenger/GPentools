@@ -1,0 +1,21 @@
+- description: 'Methods to identify Security Software on an endpoint
+
+
+    when sucessfully executed, powershell is going to processes related AV products
+    if they are running.
+
+    '
+  id: b8453a5fe06b24aea12b27592d5c3d3a
+  name: Security Software Discovery - powershell
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: get-process | ?{$_.Description -like "*virus*"}; get-process | ?{$_.Description
+          -like "*carbonblack*"}; get-process | ?{$_.Description -like "*defender*"};
+          get-process | ?{$_.Description -like "*cylance*"}
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1518.001
+    name: 'Software Discovery: Security Software Discovery'

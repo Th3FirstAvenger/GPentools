@@ -1,0 +1,17 @@
+- description: 'Upon successful execution, cmd.exe will create a scheduled task to
+    spawn cmd.exe at 20:10.
+
+    '
+  id: aa90c1302b7462814d16b726542cac52
+  name: Scheduled task Local
+  platforms:
+    windows:
+      cmd:
+        cleanup: SCHTASKS /Delete /TN spawn /F >nul 2>&1
+        command: SCHTASKS /Create /SC ONCE /TN spawn /TR C:\windows\system32\cmd.exe
+          /ST 1210
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1053.005
+    name: 'Scheduled Task/Job: Scheduled Task'

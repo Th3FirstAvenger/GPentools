@@ -1,0 +1,18 @@
+- description: 'Visual Basic execution test, execute vbscript via PowerShell.
+
+
+    When successful, system information will be written to $env:TEMP\T1059.005.out.txt.'
+  id: 9d35818be9c6659582499258a5cc465d
+  name: Visual Basic script execution to gather local computer information
+  platforms:
+    windows:
+      psh:
+        cleanup: Remove-Item $env:TEMP\sys_info.vbs -ErrorAction Ignore; Remove-Item
+          $env:TEMP\T1059.005.out.txt -ErrorAction Ignore
+        command: cscript a771e6_sys_info.vbs > $env:TEMP\T1059.005.out.txt
+        payloads:
+        - a771e6_sys_info.vbs
+  tactic: execution
+  technique:
+    attack_id: T1059.005
+    name: 'Command and Scripting Interpreter: Visual Basic'

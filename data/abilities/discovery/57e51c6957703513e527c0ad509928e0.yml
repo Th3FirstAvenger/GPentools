@@ -1,0 +1,18 @@
+- description: 'Adversaries may attempt to get a listing of non-security related software
+    that is installed on the system. Adversaries may use the information from Software
+    Discovery during automated discovery to shape follow-on behaviors
+
+    '
+  id: 57e51c6957703513e527c0ad509928e0
+  name: Find and Display Safari Browser Version
+  platforms:
+    darwin:
+      cmd:
+        cleanup: ''
+        command: /usr/libexec/PlistBuddy -c "print :CFBundleShortVersionString" /Applications/Safari.app/Contents/Info.plist
+          && /usr/libexec/PlistBuddy -c "print :CFBundleVersion" /Applications/Safari.app/Contents/Info.plist
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1518
+    name: Software Discovery

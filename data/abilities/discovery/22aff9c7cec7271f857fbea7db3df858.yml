@@ -1,0 +1,19 @@
+- description: 'Enumerate all accounts
+
+    Upon exection, multiple enumeration commands will be run and their output displayed
+    in the PowerShell session
+
+    '
+  id: 22aff9c7cec7271f857fbea7db3df858
+  name: Enumerate all accounts on Windows (Local)
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: net user && dir c:\Users\ && cmdkey.exe /list && net localgroup "Users"
+          && net localgroup
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1087.001
+    name: 'Account Discovery: Local Account'

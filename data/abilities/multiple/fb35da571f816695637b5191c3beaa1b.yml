@@ -1,0 +1,15 @@
+- description: "This test adds persistence via a plist to execute via the macOS Event\
+    \ Monitor Daemon. \n"
+  id: fb35da571f816695637b5191c3beaa1b
+  name: Event Monitor Daemon Persistence
+  platforms:
+    darwin:
+      sh:
+        cleanup: sudo rm /etc/emond.d/rules/atomicredteam_T1053_004.plist; sudo rm
+          /private/var/db/emondClients/randomflag
+        command: 'sudo cp #{script_location} #{script_destination}; sudo touch /private/var/db/emondClients/#{empty_file}'
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1053.004
+    name: 'Scheduled Task/Job: Launchd'

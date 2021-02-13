@@ -1,0 +1,21 @@
+- description: 'Windows 10 Utility To Inject DLLS.
+
+
+    Upon successful execution, powershell.exe will download T1055.dll to disk. Powershell
+    will then spawn mavinject.exe to perform process injection in T1055.dll.
+
+    With default arguments, expect to see a MessageBox, with notepad''s icon in taskbar.
+
+    '
+  id: f4cb0ea50d67c10dd3d15dd6666604bd
+  name: Process Injection via mavinject.exe
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: '$mypid = #{process_id}; mavinject $mypid /INJECTRUNNING #{dll_payload}'
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1055
+    name: Process Injection

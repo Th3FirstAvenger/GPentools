@@ -1,0 +1,16 @@
+- description: 'Execute arbitrary MSI file. Commonly seen in application installation.
+    The MSI opens notepad.exe when sucessfully executed.
+
+    '
+  id: cea8aaa56f41e53a717692d1ed0bee4f
+  name: Msiexec.exe - Execute Local MSI file
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: msiexec.exe /q /i "#{msi_payload}"
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1218.007
+    name: 'Signed Binary Proxy Execution: Msiexec'

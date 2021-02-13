@@ -1,0 +1,20 @@
+- description: 'Stomps on the modification timestamp of a file
+
+    '
+  id: e98c2bf04036423fc99378040cfa9c19
+  name: Set a file's modification timestamp
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: touch -m -t 197001010000.00 /opt/filename
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: touch -m -t 197001010000.00 /opt/filename
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1070.006
+    name: 'Indicator Removal on Host: Timestomp'

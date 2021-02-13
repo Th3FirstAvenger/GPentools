@@ -1,0 +1,14 @@
+- description: A list of commands known to be performed by Qakbot for recon purposes
+  id: 2b4e2a7be6ebda89812fe2d2f39f6173
+  name: Qakbot Recon
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: 770da0_qakbot.bat
+        payloads:
+        - 770da0_qakbot.bat
+  tactic: discovery
+  technique:
+    attack_id: T1016
+    name: System Network Configuration Discovery

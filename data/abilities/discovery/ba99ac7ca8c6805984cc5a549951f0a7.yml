@@ -1,0 +1,30 @@
+- description: 'Permission Groups Discovery
+
+    '
+  id: ba99ac7ca8c6805984cc5a549951f0a7
+  name: Permission Groups Discovery (Local)
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: if [ -x "$(command -v dscacheutil)" ]; then dscacheutil -q group;
+          else echo "dscacheutil is missing from the machine. skipping..."; fi;; if
+          [ -x "$(command -v dscl)" ]; then dscl . -list /Groups; else echo "dscl
+          is missing from the machine. skipping..."; fi;; if [ -x "$(command -v groups)"
+          ]; then groups; else echo "groups is missing from the machine. skipping...";
+          fi;
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: if [ -x "$(command -v dscacheutil)" ]; then dscacheutil -q group;
+          else echo "dscacheutil is missing from the machine. skipping..."; fi;; if
+          [ -x "$(command -v dscl)" ]; then dscl . -list /Groups; else echo "dscl
+          is missing from the machine. skipping..."; fi;; if [ -x "$(command -v groups)"
+          ]; then groups; else echo "groups is missing from the machine. skipping...";
+          fi;
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1069.001
+    name: 'Permission Groups Discovery: Local Groups'

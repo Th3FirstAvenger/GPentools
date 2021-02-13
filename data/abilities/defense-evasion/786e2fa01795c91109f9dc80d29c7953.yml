@@ -1,0 +1,21 @@
+- description: 'Disables HTTP logging on a Windows IIS web server as seen by Threat
+    Group 3390 (Bronze Union).
+
+    This action requires HTTP logging configurations in IIS to be unlocked.
+
+    '
+  id: 786e2fa01795c91109f9dc80d29c7953
+  name: Disable Windows IIS HTTP Logging
+  platforms:
+    windows:
+      psh:
+        cleanup: if(Test-Path "C:\Windows\System32\inetsrv\appcmd.exe"){;   C:\Windows\System32\inetsrv\appcmd.exe
+          set config "Default Web Site" /section:httplogging /dontLog:false *>$null;
+          }
+        command: C:\Windows\System32\inetsrv\appcmd.exe set config "Default Web Site"
+          /section:httplogging /dontLog:true
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562.002
+    name: 'Impair Defenses: Disable Windows Event Logging'

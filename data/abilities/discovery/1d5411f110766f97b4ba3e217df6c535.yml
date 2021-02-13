@@ -1,0 +1,20 @@
+- description: 'List opened files by user
+
+    '
+  id: 1d5411f110766f97b4ba3e217df6c535
+  name: List opened files by user
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: username=$(id -u -n) && lsof -u $username
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: username=$(id -u -n) && lsof -u $username
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1087.001
+    name: 'Account Discovery: Local Account'

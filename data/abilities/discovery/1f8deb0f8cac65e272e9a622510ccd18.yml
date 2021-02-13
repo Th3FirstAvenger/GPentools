@@ -1,0 +1,16 @@
+- description: 'Lists the password complexity policy to console on CentOS/RHEL 7.x
+    Linux.
+
+    '
+  id: 1f8deb0f8cac65e272e9a622510ccd18
+  name: Examine password complexity policy - CentOS/RHEL 7.x
+  platforms:
+    linux:
+      sh:
+        cleanup: ''
+        command: cat /etc/security/pwquality.conf
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1201
+    name: Password Policy Discovery

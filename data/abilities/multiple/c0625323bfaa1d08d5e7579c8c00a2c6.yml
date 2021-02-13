@@ -1,0 +1,16 @@
+- description: 'Netsh interacts with other operating system components using dynamic-link
+    library (DLL) files
+
+    '
+  id: c0625323bfaa1d08d5e7579c8c00a2c6
+  name: Netsh Helper DLL Registration
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: netsh.exe add helper C:\Path\file.dll
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1546.007
+    name: 'Event Triggered Execution: Netsh Helper DLL'

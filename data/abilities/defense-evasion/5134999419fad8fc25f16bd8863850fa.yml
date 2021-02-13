@@ -1,0 +1,20 @@
+- description: 'Clears bash history via rm
+
+    '
+  id: 5134999419fad8fc25f16bd8863850fa
+  name: Clear Bash history (echo)
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: echo "" > ~/.bash_history
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: echo "" > ~/.bash_history
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1070.003
+    name: 'Indicator Removal on Host: Clear Command History'

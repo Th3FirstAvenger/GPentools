@@ -1,0 +1,20 @@
+- description: 'Stomps on the access timestamp of a file
+
+    '
+  id: 4e90d192b0ca43e7ba97d3ec848af479
+  name: Set a file's access timestamp
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: touch -a -t 197001010000.00 /opt/filename
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: touch -a -t 197001010000.00 /opt/filename
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1070.006
+    name: 'Indicator Removal on Host: Timestomp'

@@ -1,0 +1,18 @@
+- description: 'Creates a root CA with certutil
+
+    '
+  id: 552ff1c1b535d43861cdfe68c4c25836
+  name: Install root CA on Windows with certutil
+  platforms:
+    windows:
+      psh:
+        cleanup: $cert = Import-Certificate -FilePath $env:Temp\rootCA2.cer -CertStoreLocation
+          Cert:\LocalMachine\My; Get-ChildItem Cert:\LocalMachine\My\$($cert.Thumbprint)
+          -ErrorAction Ignore | Remove-Item -ErrorAction Ignore; Get-ChildItem Cert:\LocalMachine\Root\$($cert.Thumbprint)
+          -ErrorAction Ignore | Remove-Item -ErrorAction Ignore
+        command: certutil -addstore my $env:Temp\rootCA2.cer
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1553.004
+    name: 'Subvert Trust Controls: Install Root Certificate'

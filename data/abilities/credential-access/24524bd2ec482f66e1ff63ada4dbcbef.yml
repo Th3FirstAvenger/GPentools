@@ -1,0 +1,19 @@
+- description: 'This test is intended to be run on a domain Controller.
+
+
+    The Active Directory database NTDS.dit may be dumped by copying it from a Volume
+    Shadow Copy.
+
+    '
+  id: 24524bd2ec482f66e1ff63ada4dbcbef
+  name: Create Volume Shadow Copy with WMI
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: 'wmic shadowcopy call create Volume=C:'
+        payloads: []
+  tactic: credential-access
+  technique:
+    attack_id: T1003.003
+    name: 'OS Credential Dumping: NTDS'

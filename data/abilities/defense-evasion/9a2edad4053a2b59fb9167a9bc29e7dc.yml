@@ -1,0 +1,18 @@
+- description: 'Launch PowerShell with the "-WindowStyle Hidden" argument to conceal
+    PowerShell windows by setting the WindowStyle parameter to hidden.
+
+    Upon execution a hidden PowerShell window will launch calc.exe
+
+    '
+  id: 9a2edad4053a2b59fb9167a9bc29e7dc
+  name: Hidden Window
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: Start-Process powershell.exe -WindowStyle hidden calc.exe
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1564.003
+    name: 'Hide Artifacts: Hidden Window'

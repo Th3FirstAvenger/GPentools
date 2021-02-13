@@ -1,0 +1,22 @@
+- description: 'Perform a packet capture using the windows command prompt. This will
+    require a host that has Wireshark/Tshark
+
+    installed.
+
+
+    Upon successful execution, tshark will execute and capture 5 packets on interface
+    "Ethernet".
+
+    '
+  id: 9bef39b135c8ba109d9ff3bbde32dd7c
+  name: Packet Capture Windows Command Prompt
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: '"c:\Program Files\Wireshark\tshark.exe" -i Ethernet -c 5'
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1040
+    name: Network Sniffing

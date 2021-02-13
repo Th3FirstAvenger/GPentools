@@ -1,0 +1,22 @@
+- description: 'Overwrites and deletes a file using DD.
+
+    To stop the test, break the command with CTRL/CMD+C.
+
+    '
+  id: b646ac5cfbb207b520bb543cad1f25fb
+  name: macOS/Linux - Overwrite file with DD
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: dd of=/var/log/syslog if=/dev/zero
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: dd of=/var/log/syslog if=/dev/zero
+        payloads: []
+  tactic: impact
+  technique:
+    attack_id: T1485
+    name: Data Destruction

@@ -1,0 +1,24 @@
+- description: 'forfiles.exe may invoke the execution of programs and commands from
+    a Command-Line Interface.
+
+    [Reference](https://github.com/api0cradle/LOLBAS/blob/master/OSBinaries/Forfiles.md)
+
+    "This is basically saying for each occurrence of notepad.exe in c:\windows\system32
+    run calc.exe"
+
+    Upon execution calc.exe will be opened
+
+    '
+  id: 27002564be3c8262d1052c9c726e7cc5
+  name: Indirect Command Execution - forfiles.exe
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: forfiles /p c:\windows\system32 /m notepad.exe /c calc.exe && forfiles
+          /p c:\windows\system32 /m notepad.exe /c "c:\folder\normal.dll:evil.exe"
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1202
+    name: Indirect Command Execution

@@ -1,0 +1,18 @@
+- description: 'Disables syslog collection
+
+    '
+  id: 429ac4f8927d834a8f4786b2f53ed680
+  name: Disable syslog
+  platforms:
+    linux:
+      sh:
+        cleanup: ''
+        command: if [ $(rpm -q --queryformat '%{VERSION}' centos-release) -eq "6"
+          ];; then;   service rsyslog stop;   chkconfig off rsyslog; else if [ $(rpm
+          -q --queryformat '%{VERSION}' centos-release) -eq "7" ];;   systemctl stop
+          rsyslog;   systemctl disable rsyslog; fi
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562.001
+    name: 'Impair Defenses: Disable or Modify Tools'

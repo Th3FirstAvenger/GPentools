@@ -1,0 +1,21 @@
+- description: "This test exploits a signed driver to execute code in Kernel.\nThis\
+    \ example was curated from a blog that utilizes puppetstrings.exe with the vulnerable\
+    \ (signed driver) capcom.sys. \nThe capcom.sys driver may be found on github.\
+    \ A great reference is here: http://www.fuzzysecurity.com/tutorials/28.html\n\
+    SHA1 C1D5CF8C43E7679B782630E93F5E6420CA1749A7\nWe leverage the work done here:\n\
+    https://zerosum0x0.blogspot.com/2017/07/puppet-strings-dirty-secret-for-free.html\n\
+    The hash of our PoC Exploit is\nSHA1 DD8DA630C00953B6D5182AA66AF999B1E117F441\n\
+    This will simulate hiding a process.\n"
+  id: ee9688a8c2c4f4e941332f1f7ca959e7
+  name: Windows Signed Driver Rootkit Test
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: 676ed2_puppetstrings.exe C:\Drivers\driver.sys
+        payloads:
+        - 676ed2_puppetstrings.exe
+  tactic: defense-evasion
+  technique:
+    attack_id: T1014
+    name: Rootkit

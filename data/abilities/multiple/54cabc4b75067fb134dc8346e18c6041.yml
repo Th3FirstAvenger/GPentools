@@ -1,0 +1,17 @@
+- description: 'Utilize LaunchDaemon to launch `Hello World`
+
+    '
+  id: 54cabc4b75067fb134dc8346e18c6041
+  name: Launch Daemon
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: sudo cp f5fe80_atomicredteam_T1543_004.plist /Library/LaunchDaemons/com.atomicredteam.plist;
+          sudo launchctl load -w /Library/LaunchDaemons/com.atomicredteam.plist
+        payloads:
+        - f5fe80_atomicredteam_T1543_004.plist
+  tactic: multiple
+  technique:
+    attack_id: T1543.004
+    name: 'Create or Modify System Process: Launch Daemon'

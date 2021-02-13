@@ -1,0 +1,22 @@
+- description: 'Attackers leverage an existing Windows binary, attrib.exe, to mark
+    specific files or folder as hidden by using specific flags so that
+
+    the victim does not see the file.
+
+    '
+  id: 7e79bb3907dee422b0c28e48646c5bad
+  name: attrib - hide file
+  platforms:
+    windows:
+      cmd:
+        cleanup: attrib.exe -h %temp%\T1222.001_attrib_2\T1222.001_attrib1.txt &&
+          attrib.exe -h %temp%\T1222.001_attrib_2\T1222.001_attrib2.txt && del %temp%\T1222.001_attrib_2\T1222.001_attrib*.txt
+          && rmdir %temp%\T1222.001_attrib_2
+        command: attrib.exe +h %temp%\T1222.001_attrib_2\T1222.001_attrib1.txt &&
+          attrib.exe +h %temp%\T1222.001_attrib_2\T1222.001_attrib2.txt
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1222.001
+    name: 'File and Directory Permissions Modification: Windows File and Directory
+      Permissions Modification'

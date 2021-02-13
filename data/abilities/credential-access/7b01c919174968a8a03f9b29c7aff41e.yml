@@ -1,0 +1,20 @@
+- description: 'Extracting credentials from files
+
+    '
+  id: 7b01c919174968a8a03f9b29c7aff41e
+  name: Extract passwords with grep
+  platforms:
+    darwin:
+      sh:
+        cleanup: ''
+        command: grep -ri password /
+        payloads: []
+    linux:
+      sh:
+        cleanup: ''
+        command: grep -ri password /
+        payloads: []
+  tactic: credential-access
+  technique:
+    attack_id: T1552.001
+    name: 'Unsecured Credentials: Credentials In Files'

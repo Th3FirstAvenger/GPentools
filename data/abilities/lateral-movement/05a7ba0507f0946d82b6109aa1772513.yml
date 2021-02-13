@@ -1,0 +1,19 @@
+- description: 'Execute Invoke-command on remote host.
+
+
+    Upon successful execution, powershell will execute ipconfig on localhost using
+    `invoke-command`.
+
+    '
+  id: 05a7ba0507f0946d82b6109aa1772513
+  name: Invoke-Command
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: invoke-command -ComputerName localhost -scriptblock {ipconfig}
+        payloads: []
+  tactic: lateral-movement
+  technique:
+    attack_id: T1021.006
+    name: 'Remote Services: Windows Remote Management'

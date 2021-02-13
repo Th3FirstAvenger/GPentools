@@ -1,0 +1,15 @@
+- description: 'This test restarts a Windows system.
+
+    '
+  id: 2657844e293af9df8e8d9ddfb58376f8
+  name: Restart System - Windows
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: shutdown /r /t 1
+        payloads: []
+  tactic: impact
+  technique:
+    attack_id: T1529
+    name: System Shutdown/Reboot

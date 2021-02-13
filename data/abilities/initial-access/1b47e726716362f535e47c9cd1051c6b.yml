@@ -1,0 +1,25 @@
+- description: 'The macro-enabled Excel file contains VBScript which opens your default
+    web browser and opens it to [google.com](http://google.com).
+
+    The below will successfully download the macro-enabled Excel file to the current
+    location.
+
+    '
+  id: 1b47e726716362f535e47c9cd1051c6b
+  name: Download Phishing Attachment - VBScript
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: if (-not(Test-Path HKLM:SOFTWARE\Classes\Excel.Application)){;   return
+          'Please install Microsoft Excel before running this test.'; }; else{;   $url
+          = 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1566.001/bin/PhishingAttachment.xlsm';   $fileName
+          = 'PhishingAttachment.xlsm';   New-Item -Type File -Force -Path $fileName
+          | out-null;   $wc = New-Object System.Net.WebClient;   $wc.Encoding = [System.Text.Encoding]::UTF8;   [Net.ServicePointManager]::SecurityProtocol
+          = [Net.SecurityProtocolType]::Tls12;   ($wc.DownloadString("$url")) | Out-File
+          $fileName; }
+        payloads: []
+  tactic: initial-access
+  technique:
+    attack_id: T1566.001
+    name: 'Phishing: Spearphishing Attachment'

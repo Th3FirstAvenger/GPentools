@@ -1,0 +1,21 @@
+- description: 'Execute arbitrary DLL file stored locally. Commonly seen in application
+    installation.
+
+    Upon execution, a window titled "Boom!" will open that says "Locked and Loaded!".
+    For 32 bit systems change the dll_payload argument to the Win32 folder.
+
+    By default, if the src folder is not in place, it will download the 64 bit version.
+
+    '
+  id: eb6359530db3f4dbc4c00445e41472fe
+  name: Msiexec.exe - Execute Arbitrary DLL
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: msiexec.exe /y "#{dll_payload}"
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1218.007
+    name: 'Signed Binary Proxy Execution: Msiexec'

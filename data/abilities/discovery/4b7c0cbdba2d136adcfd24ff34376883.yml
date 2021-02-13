@@ -1,0 +1,20 @@
+- description: '(requires root)
+
+    '
+  id: 4b7c0cbdba2d136adcfd24ff34376883
+  name: View sudoers access
+  platforms:
+    darwin:
+      sh:
+        cleanup: rm -f /tmp/T1087.001.txt
+        command: sudo cat /etc/sudoers > /tmp/T1087.001.txt; cat /tmp/T1087.001.txt
+        payloads: []
+    linux:
+      sh:
+        cleanup: rm -f /tmp/T1087.001.txt
+        command: sudo cat /etc/sudoers > /tmp/T1087.001.txt; cat /tmp/T1087.001.txt
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1087.001
+    name: 'Account Discovery: Local Account'

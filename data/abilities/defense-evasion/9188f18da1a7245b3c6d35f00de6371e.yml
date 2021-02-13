@@ -1,0 +1,19 @@
+- description: 'Copies sh process, renames it as crond, and executes it to masquerade
+    as the cron daemon.
+
+
+    Upon successful execution, sh is renamed to `crond` and executed.
+
+    '
+  id: 9188f18da1a7245b3c6d35f00de6371e
+  name: Masquerading as Linux crond process.
+  platforms:
+    linux:
+      sh:
+        cleanup: rm /tmp/crond
+        command: cp /bin/sh /tmp/crond;; /tmp/crond
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1036.003
+    name: 'Masquerading: Rename System Utilities'

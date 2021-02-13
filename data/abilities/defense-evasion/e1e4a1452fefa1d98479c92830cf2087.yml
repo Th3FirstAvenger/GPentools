@@ -1,0 +1,15 @@
+- description: This test will attempt to allow an executable through the system firewall
+    located in the Users directory
+  id: e1e4a1452fefa1d98479c92830cf2087
+  name: Allow Executable Through Firewall Located in Non-Standard Location
+  platforms:
+    windows:
+      psh:
+        cleanup: netsh advfirewall firewall delete rule name="Atomic Test" | Out-Null
+        command: netsh advfirewall firewall add rule name="Atomic Test" dir=in action=allow
+          program="C:\Users\$env:UserName\AtomicTest.exe" enable=yes
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562.004
+    name: 'Impair Defenses: Disable or Modify System Firewall'

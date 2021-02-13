@@ -1,0 +1,21 @@
+- description: 'This test uses PowerShell to create a Hollow from a PE on disk with
+    explorer as the parent.
+
+    Credit to FuzzySecurity (https://github.com/FuzzySecurity/PowerShell-Suite/blob/master/Start-Hollow.ps1)
+
+    '
+  id: 809a733d1d549fe4514defd87dfdcfaf
+  name: Process Hollowing using PowerShell
+  platforms:
+    windows:
+      psh:
+        cleanup: Stop-Process -Name "calc" -ErrorAction Ignore
+        command: . cd6d01_Start-Hollow.ps1; $ppid=Get-Process explorer | select -expand
+          id; Start-Hollow -Sponsor "C:\Windows\System32\calc.exe" -Hollow "C:\Windows\System32\cmd.exe"
+          -ParentPID $ppid -Verbose
+        payloads:
+        - cd6d01_Start-Hollow.ps1
+  tactic: multiple
+  technique:
+    attack_id: T1055.012
+    name: 'Process Injection: Process Hollowing'

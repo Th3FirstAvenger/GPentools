@@ -1,0 +1,16 @@
+- description: Executes an HTA Application with JScript Engine, Rundll32 and Inline
+    Protocol Handler.
+  id: 38f7b56204534ed16be626e5a368c3fb
+  name: Invoke HTML Application - JScript Engine with Rundll32 and Inline Protocol
+    Handler
+  platforms:
+    windows:
+      psh:
+        cleanup: ''
+        command: Invoke-ATHHTMLApplication -ScriptEngine JScript -InlineProtocolHandler
+          About -UseRundll32 -Rundll32FilePath $env:windir\system32\rundll32.exe
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1218.005
+    name: 'Signed Binary Proxy Execution: Mshta'

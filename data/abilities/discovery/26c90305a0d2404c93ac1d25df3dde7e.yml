@@ -1,0 +1,22 @@
+- description: 'Find or discover files on the file system.  Upon execution, the file
+    "download" will be placed in the temporary folder and contain the output of
+
+    all of the data discovery commands.
+
+    '
+  id: 26c90305a0d2404c93ac1d25df3dde7e
+  name: File and Directory Discovery (cmd.exe)
+  platforms:
+    windows:
+      cmd:
+        cleanup: ''
+        command: dir /s c:\ >> %temp%\download && dir /s "c:\Documents and Settings"
+          >> %temp%\download && dir /s "c:\Program Files\" >> %temp%\download && dir
+          "%systemdrive%\Users\*.*" >> %temp%\download && dir "%userprofile%\AppData\Roaming\Microsoft\Windows\Recent\*.*"
+          >> %temp%\download && dir "%userprofile%\Desktop\*.*" >> %temp%\download
+          && tree /F >> %temp%\download
+        payloads: []
+  tactic: discovery
+  technique:
+    attack_id: T1083
+    name: File and Directory Discovery

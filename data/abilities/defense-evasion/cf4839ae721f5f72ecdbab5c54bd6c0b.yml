@@ -1,0 +1,16 @@
+- description: 'Use the `shred` command to overwrite the temporary file and then delete
+    it
+
+    '
+  id: cf4839ae721f5f72ecdbab5c54bd6c0b
+  name: Overwrite and delete a file with shred
+  platforms:
+    linux:
+      sh:
+        cleanup: ''
+        command: shred -u /tmp/victim-shred.txt
+        payloads: []
+  tactic: defense-evasion
+  technique:
+    attack_id: T1070.004
+    name: 'Indicator Removal on Host: File Deletion'

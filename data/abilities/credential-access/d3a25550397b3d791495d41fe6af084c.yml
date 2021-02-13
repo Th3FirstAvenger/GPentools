@@ -1,0 +1,19 @@
+- description: "Dump user credentials using Windows Credential Editor (supports Windows\
+    \ XP, 2003, Vista, 7, 2008 and Windows 8 only)\n\nUpon successful execution, you\
+    \ should see a file with user passwords/hashes at %temp%/wce-output.file.\n\n\
+    If you see no output it is likely that execution was blocked by Anti-Virus. \n\
+    \nIf you see a message saying \\\"wce.exe is not recognized as an internal or\
+    \ external command\\\", try using the  get-prereq_commands to download and install\
+    \ Windows Credential Editor first.\n"
+  id: d3a25550397b3d791495d41fe6af084c
+  name: Windows Credential Editor
+  platforms:
+    windows:
+      cmd:
+        cleanup: del "%temp%\wce-output.txt" >nul 2>&1
+        command: PathToAtomicsFolder\T1003.001\bin\wce.exe -o %temp%\wce-output.txt
+        payloads: []
+  tactic: credential-access
+  technique:
+    attack_id: T1003.001
+    name: 'OS Credential Dumping: LSASS Memory'
